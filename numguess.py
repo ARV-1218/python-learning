@@ -3,11 +3,18 @@ def getNum(chosenN):
     isCorrect = False
     for i in range(1,11):
             if(isCorrect == False):
-                guessNum = int(input(f"Try number:{i}) Enter a number:"))
+                while True:
+                    try:
+                        guessNum = int(input(f"\n Try number:{i}) Enter a number:"))
+                        break
+                    except ValueError:
+                        print("\n Invalid input.Only number is accepted. Try again!")
+                   
+                                            
                 isCorrect = checkNum(guessNum,chosenN)
                 if(i == 10):
-                     print("You have ran out of tries")            
-                     print(f"The correct answer was {chosenN}")
+                     print("\n You have ran out of tries")            
+                     print(f"\n The correct answer was {chosenN}")
  
             
 def checkNum(num,chosenN):
