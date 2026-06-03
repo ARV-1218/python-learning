@@ -1,20 +1,16 @@
 import tkinter as tk
 
-root = tk.Tk() 
+root = tk.Tk()
 
-tk.Label(root,text="First Name:").grid(row=0,column=0)
-tk.Label(root,text="Last Name:").grid(row=1,column=0)
-entry1 = tk.Entry(root)
-entry2 = tk.Entry(root)
+scrollbar = tk.Scrollbar(root)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-entry1.grid(row=0,column=1)
-entry2.grid(row=1,column=1)
+mylist = tk.Listbox(root, yscrollcommand=scrollbar.set)
 
+for line in range(100):
+    mylist.insert(tk.END, "This is line number " + str(line))
 
-lab = tk.Label(root,text="Hello! I am Aarav")
-lab.grid(row=3,column=0)
+mylist.pack(side=tk.LEFT, fill=tk.BOTH)
+scrollbar.config(command=mylist.yview)
 
-button = tk.Button(root,text="Stop",width=10,command=root.destroy)
-button.grid(row=4,column=0)
-root.geometry("400x300") 
 root.mainloop()
