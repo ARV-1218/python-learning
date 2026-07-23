@@ -1,19 +1,29 @@
 import requests #for creating request to the server
 import tkinter as tk #basic gui
 
+import ctypes
+
+def play_audio():
+    # Use the exact path to your downloaded mp3 file
+    file_path = r"C:\Users\Maheswor\Documents\GitHub\python-learning\dictionary\word.mp3"
+    
+    # Send native commands to Windows to play the MP3 natively
+    winmm = ctypes.windll.winmm
+    winmm.mciSendStringW("close all", None, 0, 0)
+    winmm.mciSendStringW(f'open "{file_path}" type mpegvideo alias mp3', None, 0, 0)
+    winmm.mciSendStringW("play mp3", None, 0, 0)
+
+# Call this function inside your fetch() code after downloading the file
+
+
 
 print("Definitions Generator :)")
 
-# ---------------------------
-# Create Main Window
-# ---------------------------
+
 root = tk.Tk()
 root.title("Dictionary App")
 root.state("zoomed")
 
-# ---------------------------
-# Input Label
-# ---------------------------
 lab = tk.Label(root, text="Enter a word:",font=("Arial",12))
 lab.pack(pady=5)
 
@@ -88,20 +98,26 @@ def fetch(word):
         print(audio_url)
         if audio_url:
             re2 =  requests.get(audio_url,timeout=1)
-            
-            with open("word.mp3","wb") as f:
+            winmm = ctypes.windll.winmm
+            winmm.mciSendStringW("close all", None, 0, 0)
+            with open(r"dictionary\word.mp3","wb") as f:
+                
                 f.write(re2.content)
-            
+       
         
         else:
             pass
 
-        text_box.delete("1.0", tk.END)   # Clear previous search results
+
         
         text_box.config(state="normal")
-         
+      
+        
         text_box.insert(tk.END,f"\n Word = {wrd} \n")
         text_box.insert(tk.END,f"\n Phonetic = {phonetic} \n")
+        
+        audiobtn = tk.Button(root,text="Play",command=lambda:play_audio())
+        audiobtn.pack()
         # Enable text box so we can write into it
        
 

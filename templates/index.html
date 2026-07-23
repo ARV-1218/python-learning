@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>The Python Greeter</h2>
+
+    <form method="POST">
+        <input type="text" name="visitor_name" placeholder="Type your name here" required>
+        <button type="submit">Say Hello</button>
+    </form>
+
+    {% if name %}
+        <h1>Hello, {{ name }}! Welcome to my site.</h1>
+    {% endif %}
+
+</body>
+</html>
