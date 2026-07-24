@@ -15,27 +15,47 @@ try:
         category TEXT
     )""")
     
-    cursor.execute("""
-    INSERT INTO MENU
-    (name,description,price,image,category)
+    #inserting values to tables
+    # cursor.execute("""
+    # INSERT INTO MENU
+    # (name,description,price,image,category)
     
-    VALUES(
-    'Pizza',
-    'Tasty and crispy cruch',
-    '450',
-    'pizza.jpg',
-    'Main'
-    )
+    # VALUES(
+    # 'Burger',
+    # 'Tasty and juicy burger',
+    # '150',
+    # 'burger.jpg',
+    # 'Main'
+    # )
+    # """)
+    # conn.commit()
+    
+    #WHERE CLAUSE and select
+    cursor.execute("""SELECT * 
+    FROM MENU
+    WHERE category = 'Main'
     """)
-    conn.commit()
     
-    cursor.execute("SELECT * FROM MENU")
-        
+    cursor.execute("""SELECT * 
+    FROM MENU
+    WHERE price < 300""")
+    
+    cursor.execute("""SELECT * 
+    FROM MENU
+    WHERE name = 'Coffee'""")
+    
+    cursor.execute("""SELECT * 
+    FROM MENU
+    WHERE category != 'Drinks'""")
+    
+    
+    #fetch from sqllite db  
     rows = cursor.fetchall()
         
     for r in rows:
         print(f"{r} \n")
 
+    #creating tables
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS Orders(
         order_id INTEGER PRIMARY KEY AUTOINCREMENT,
