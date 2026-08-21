@@ -80,7 +80,46 @@ try:
             amount INTEGER NOT NULL,
             date TEXT NOT NULL
         )""")
+    #UPDATEEEEE!!!!!!!!   
+    cursor.execute("""
+        UPDATE MENU
+        SET
+        price = 400
+        WHERE 
+        name = 'Burger'            
+        """)
+    cursor.execute("""
+        UPDATE MENU
+        SET
+        name = 'Cheese Pizza'
+        WHERE
+        name = 'Pizza'
+        
+    """)
+    cursor.execute("""
+            UPDATE MENU
+            SET
+            category='Hot Drinks'
+            WHERE
+            name = 'Coffee'
+            
+        """)
+    cursor.execute("""
+            UPDATE MENU
+            SET
+            name='Chicken Burger',
+            price=450
+            WHERE
+            name = 'Burger'
+            
+        """)    
+    cursor.execute("""
+    INSERT INTO MENU(name,description,price,image,category)
+    """)
+    conn.commit()
     cursor.close()
+    
+  
 except sqlite3.Error as error:
     print("Error occured",error)
     

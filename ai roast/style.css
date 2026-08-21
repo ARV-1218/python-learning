@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0d0d0d;
+    color: white;
+}
+
+#about_me {
+    width: min(90%, 600px);
+    padding: 40px;
+    border-radius: 24px;
+    background: #171717;
+    border: 1px solid #333;
+    box-shadow: 0 0 40px rgba(255, 68, 81, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#name_txt,
+#smtg_abt_me_text {
+    font-size: 17px;
+    font-weight: bold;
+    color: #f5f5f5;
+}
+
+#name,
+#abt_para {
+    width: 100%;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    background: #101010;
+    color: white;
+    outline: none;
+    padding: 14px;
+    font-size: 16px;
+    transition: 0.25s ease;
+}
+
+#name:focus,
+#abt_para:focus {
+    border-color: #ff4451;
+    box-shadow: 0 0 12px rgba(255, 68, 81, 0.25);
+}
+
+#abt_para {
+    height: 130px;
+    resize: vertical;
+}
+
+#submit {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+
+    background: #ff4451;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#submit:hover {
+    background: #ff5965;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 68, 81, 0.3);
+}
+
+#submit:active {
+    transform: scale(0.96);
+}
+
+#roasts {
+    min-height: 80px;
+    margin-top: 15px;
+    padding: 20px;
+
+    border-radius: 15px;
+    background: #101010;
+    border: 1px solid #333;
+
+    color: #ff6974;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    #about_me {
+        padding: 25px;
+    }
+
+    #submit {
+        font-size: 16px;
+    }
+
+    #roasts {
+        font-size: 16px;
+    }
+}
+#dialog_overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+
+    z-index: 1000;
+}
+
+#dialog_overlay.show {
+    display: flex;
+}
+
+#dialog {
+    position: relative;
+
+    width: min(90%, 500px);
+    padding: 35px;
+
+    background: #171717;
+    border: 1px solid #444;
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow: 0 0 50px rgba(255, 68, 81, 0.25);
+
+    animation: dialogAppear 0.3s ease;
+}
+
+.dialog_icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+#dialog h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+#dialog_roast {
+    color: #ff6974;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+#close_dialog {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+
+    border: none;
+    background: none;
+
+    color: #aaa;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+#close_dialog:hover {
+    color: white;
+}
+
+#roast_again {
+    border: none;
+    border-radius: 12px;
+
+    padding: 13px 22px;
+
+    background: #ff4451;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#roast_again:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 68, 81, 0.3);
+}
+
+@keyframes dialogAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
