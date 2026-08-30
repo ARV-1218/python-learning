@@ -1,1 +1,0 @@
-open("data.txt","x")
